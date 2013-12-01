@@ -1,4 +1,4 @@
-# Script Name	:	createOBIEEWOrkshopUsers.py
+# Script Name	:	modifyOBIEEHOLUsers.py
 # Created by	:	Art of BI Software (artofbi.com)
 # Author		:	C.Screen
 # Date			:	2013/10/01
@@ -33,34 +33,36 @@ def connectToWLSAdmin():
 		
 
 # -- Generate Users Application --
-def createUserLoop() :
+def modifyUserLoop() :
 	try:
 	
 		i = int(userNamePrefixNumberStart)
 		#for i in range(1000):
 		while (i <= int(userNamePrefixNumberFinish)):
-			userToCreate = userNamePrefix + "%s" % str(i).zfill(int(useZeroPaddingCount))
-			print userToCreate
+		
+			userToModify = userNamePrefix + "%s" % str(i).zfill(int(useZeroPaddingCount))
+			print userToModify
 			dauth=cmo.getSecurityConfiguration().getDefaultRealm().lookupAuthenticationProvider("DefaultAuthenticator")
-			dauth.createUser( userToCreate , userPassword, 'User for Workshop: ' + userToCreate + ' (password: ' + userPassword + ')')
-			print "created..."
-			dauth.addMemberToGroup(groupToAssignUsers, userToCreate)
-			print "added to group " + groupToAssignUsers + "..."
+			
+			
+			dauth.removeMemberFromGroup(groupToAssignUsers, userToModify)
+			print "modify user at group " + groupToAssignUsers + "..."
+			
+			
+			dauth.removeUser(userToModify)
+			print "deleted user " + userToModify
+			
 			
 			### // if adding to a application role directly
 			###if len(appRoleToAssignUsers) > 1
-			###	grantAppRole("obi", groupToAssignUsers, "weblogic.security.principal.WLSUserImpl", userToCreate)
-			
-			### // deleting users
-			### userToRemove = userNamePrefix + "%s" % str(i).zfill(int(useZeroPaddingCount))
-			### dauth.removeUser(userToRemove)
+			###	grantAppRole("obi", groupToAssignUsers, "weblogic.security.principal.WLSUserImpl", userToModify)
 			
 			
 			i = i + 1
-			print "User Created"
+			print "User Modified"
 			
 	except:
-		print "Exception Occurred.  The user showing above most likely already exists. Check the security realm."
+		print "Exception Occurred.  The user showing above may have some issues. Check the security realm."
 
 
 
@@ -87,8 +89,8 @@ print "[INFO] Starting Script"
 connectToWLSAdmin()
 
 
-print "[INFO] Creating Users..."
-createUserLoop()
+print "[INFO] Modifying Users..."
+modifyUserLoop()
 
 
 print "[INFO] Disconnecting..."

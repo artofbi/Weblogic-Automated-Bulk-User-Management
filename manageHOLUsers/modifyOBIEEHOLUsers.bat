@@ -2,7 +2,7 @@
 SETLOCAL
 goto endcomment
 
-# Script Name	:	createOBIEEWorkshopUsers.bat
+# Script Name	:	modifyOBIEEHOLUsers.bat
 # Created by	:	Art of BI Software (artofbi.com)
 # Author		:	C.Screen
 # Date			:	2013/10/01
@@ -15,27 +15,27 @@ goto endcomment
 ##---------------------------------------------------------
 
 REM ===================================
-REM Create Workshop Users AutoMagically
+REM Modify HOL Users AutoMagically
 REM ===================================
 
 :endcomment
 
-set createOrRemove=create
+set createOrRemove=remove 
 set wlsURL=t3://localhost:7001
 set wlsUser=weblogic
-set wlsPassword=daweblogicuserpassword
-set namePrefix=class1
+set wlsPassword=Admin123
+set namePrefix=HOL
 set namePassword=crazypassword
 set prefixStartNum=1
-set prefixFinishNum=20
-set userGroupAssign=BIStudentsorBIConsumerorsomeotherspecificapprole
+set prefixFinishNum=5
+set userGroupAssign=BIConsumers
 set useZeroPaddingCount=0
+set fmwHome=E:/Oracle/FMW
 
 
+REM C:/Oracle/FMW/oracle_common/common/bin
 
-REM C:\Oracle\FMW\oracle_common\common\bin
-
-call C:\Oracle\FMW\oracle_common\common\bin\wlst.cmd createOBIEEWorkshopUsers.py %wlsURL% %wlsUser% %wlsPassword% %createOrRemove% %namePrefix% %namePassword% %prefixStartNum% %prefixFinishNum% %userGroupAssign% %useZeroPaddingCount%
+call %fmwHome%/oracle_common/common/bin/wlst.cmd wlstScripts/modifyOBIEEHOLUsers.py %wlsURL% %wlsUser% %wlsPassword% %createOrRemove% %namePrefix% %namePassword% %prefixStartNum% %prefixFinishNum% %userGroupAssign% %useZeroPaddingCount%
 
 
 ENDLOCAL

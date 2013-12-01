@@ -2,10 +2,10 @@
 SETLOCAL
 goto endcomment
 
-# Script Name	:	createOBIEEHOLUsers.bat
-# Created by	:	Art of BI Software (artofbi.com)
-# Author		:	C.Screen
-# Date			:	2013/10/01
+# Script Name  :	createOBIEEHOLUsers.bat
+# Created by   :	Art of BI Software (artofbi.com)
+# Author       :	C.Screen
+# Date         :	2013/10/01
 
 ##---------------------------------------------------------
 # NOTES

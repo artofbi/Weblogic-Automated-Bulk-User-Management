@@ -1,7 +1,7 @@
-# Script Name	:	modifyOBIEEHOLUsers.py
-# Created by	:	Art of BI Software (artofbi.com)
-# Author		:	C.Screen
-# Date			:	2013/10/01
+# Script Name   :	modifyOBIEEHOLUsers.py
+# Created by    :	Art of BI Software (artofbi.com)
+# Author        :	C.Screen
+# Date          :	2013/10/01
 
 ##---------------------------------------------------------
 # NOTES

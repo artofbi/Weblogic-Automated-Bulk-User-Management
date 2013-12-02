@@ -47,6 +47,10 @@ def createUserLoop() :
 			dauth.addMemberToGroup(groupToAssignUsers, userToCreate)
 			print "added to group " + groupToAssignUsers + "..."
 			
+			print "updating some user attributes"
+			dauth.setUserAttributeValue( userToCreate, 'preferredlanguage', 'EN-US') 
+			dauth.setUserAttributeValue( userToCreate, 'displayname', 'Mr. ' + userToCreate) 
+			
 			### // if adding to a application role directly
 			###if len(appRoleToAssignUsers) > 1
 			###	grantAppRole("obi", groupToAssignUsers, "weblogic.security.principal.WLSUserImpl", userToCreate)
